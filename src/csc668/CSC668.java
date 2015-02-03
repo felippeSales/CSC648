@@ -7,15 +7,50 @@ package csc668;
 
 /**
  *
- * @author felipesales
+ * @author moseslee
  */
+import java.util.ArrayList;
 public class CSC668 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+ public static void main(String args[])
+{
+	ArrayList <Product> productList1 = new ArrayList();
+        ArrayList <Product> productList2 = new ArrayList();
+        ArrayList <Product> productList3 = new ArrayList();
+
+	for (int i = 0; i < 10; i++)
+	{
+		Product p = new Product();
+		Product p1 = new Product();
+		Product p2 = new Product();
+
+		productList1.add(p);
+		productList2.add(p1);
+		productList3.add(p2);
+	}
+
+
+
+	/*Payment payCredit = new Credit();
+	Payment payCheck = new Check();
+	Payment payCash = new Cash();*/
+
+	Transaction t1 = new Transaction();
+	Transaction t2 = new Transaction();
+	Transaction t3 = new Transaction();
+
+
     }
+ 
+/**
+ * Test print method to ensure correct
+ * method functions
+ * @param t 
+ */
+ void printTransactionRecords(Transaction t)
+{
+
+}
     
 }
+
