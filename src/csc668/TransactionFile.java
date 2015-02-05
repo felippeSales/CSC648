@@ -20,7 +20,7 @@ public class TransactionFile
 {
     String fileName;
     String custName;
-    ArrayList <String> USBNS = new ArrayList <String>();
+    ArrayList <String> USBNS = new ArrayList();
     ArrayList <String> proNames = new ArrayList <String>();
     String methodOfPay;
     ArrayList <Integer> quant = new ArrayList <Integer>(); 

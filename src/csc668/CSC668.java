@@ -21,6 +21,8 @@ public class CSC668 {
         ArrayList <Product> custProductList;
         ProductsFile productDB = new ProductsFile("products.txt");
         ArrayList <Product> productDBList = productDB.parse();
+        int hasOrderForm = 1;   //1 to read from a transaction file else to manually input
+        TransactionFile orderForm;
         
 	ArrayList <Product> productList1 = new ArrayList();
         ArrayList <Product> productList2 = new ArrayList();
@@ -52,17 +54,29 @@ public class CSC668 {
         System.out.println("Enter your name, the UPC numbers and " + 
                             "your method of payment");
         System.out.println("Afterwards a receipt will be printed for you");
-        
+        System.out.println("Please enter 1 if you have an order form");
+        System.out.println("If not enter 0");
         Scanner inputScan = new Scanner(System.in);
-        System.out.println("Enter your name: ");
-        name = inputScan.next();
+                    
+        hasOrderForm = inputScan.nextInt();
         
-        while(true)
+        if(hasOrderForm == 1)
         {
-            System.out.println("Enter the UPC of your item (Enter -1 to if done): ");
-            int upc = inputScan.nextInt();
-            
-            
+           
+        }
+        //User manualy inputs order
+        else
+        {
+
+            System.out.println("Enter your name: ");
+            name = inputScan.next();
+            while(true)
+            {
+                System.out.println("Enter the UPC of your item (Enter -1 to if done): ");
+                int upc = inputScan.nextInt();
+                
+
+            }
         }
         
         
