@@ -20,11 +20,13 @@ public class TransactionFile
 {
     String fileName;
     String custName;
-    ArrayList <String> USBNS = new ArrayList();
-    ArrayList <String> proNames = new ArrayList <String>();
+    ArrayList<String> names = new ArrayList();
+    ArrayList <String> USBNS = new ArrayList ();
+    ArrayList <String> proNames = new ArrayList ();
     String methodOfPay;
-    ArrayList <Integer> quant = new ArrayList <Integer>(); 
+    ArrayList <Integer> quant = new ArrayList(); 
     String checkOrCreditNum;
+    boolean newCustomer = true;
     
     TransactionFile ()
     {
@@ -51,20 +53,36 @@ public class TransactionFile
         BufferedReader br = new BufferedReader (fr);
         String temp = "";
         int count = 0;
-        while ( (temp = br.readLine()) != null)
-        {
-        System.out.println("This is Current Temp: " + temp);
+        boolean start = true;
+        newCustomer = true;
+        while ( (temp = br.readLine()) != null )
+        {   
+            
+        // Checks if the String is Empty Starting a New Transaction...
+      //  if(temp == null || temp.isEmpty())
+      //  {
+      //  newCustomer = true;
+      //  }
+     //   System.out.println("This is Current Temp: " + temp);
         
         ///////////////////////////////////////////////
         //At the end Of File checking method of payment
         ///////////////////////////////////////////////
-        if(temp.contains("Payment") == true)
+         if( (newCustomer == true))
+        {
+            System.out.println("Found a new Customer...");
+            //custName = temp;
+            names.add(temp);
+            newCustomer = false;
+        }
+         
+       else if(temp.contains("Payment") == true  &&  newCustomer == false)
         {
             String[] str_array = temp.split("\\s+");
-            System.out.println("This is in here...");
+         //   System.out.println("This is in here...");
             for(int i = 0; i < str_array.length; i++)
             {
-            System.out.println(str_array[i]);
+        //    System.out.println(str_array[i]);
             }
             methodOfPay = str_array[1];
             if(methodOfPay.equalsIgnoreCase("credit") || methodOfPay.equalsIgnoreCase("check"))
@@ -75,28 +93,33 @@ public class TransactionFile
             {
             checkOrCreditNum = "N/A";
             }
-            break;
+            newCustomer = true;
+            br.readLine();
         }
         /////////////
         // GetName
         /////////////
-        if(count == 0)
-        {
-            custName = temp;
-        }
         
         ///////////////////////////
         // Get USBN and Name Quant
         ///////////////////////////
-        if(count >= 1)
+       else if (count >= 1 && newCustomer == false)
         {
-        String[] str_array = temp.split("\\s+");
-        USBNS.add(str_array[0]);
-        int tempInt = Integer.parseInt(str_array[1]);
-        quant.add(tempInt);
-       // proNames.add(str_array[2]);
+            String[] str_array = temp.split("\\s+");
+            USBNS.add(str_array[0]);
+            if(str_array.length == 1)
+            {
+             quant.add(1);
+            }
+            else
+            {
+             int tempInt = Integer.parseInt(str_array[1]);
+             quant.add(tempInt);
+             }
         }
+       
         count++;
+        System.out.print("Here ");
         } // End of the While loop for Looking Through A File...
         fr.close();
     } ///////////////// END OF THE GO METHOD ///////////////////////
@@ -111,7 +134,7 @@ public class TransactionFile
             System.out.println("USBNS: " + s + "...at: " + count);
             count++;
         }
-       // count = 0;
+        count = 0;
         /*
          for(String s: proNames)
         {
@@ -119,6 +142,11 @@ public class TransactionFile
             count++;
         }
                 */
+        
+        for(String s: names)
+        {
+        System.out.println("Names: " + s);
+        }
         count = 0;
         for( Integer i: quant)
         {
@@ -133,5 +161,6 @@ public class TransactionFile
     ArrayList<String> getArrayListOfUPC (){return USBNS;}
     ArrayList<String> getArrayListOfProductNames(){return proNames;}
     ArrayList<Integer> getArrayListOfQuantity () {return quant;}
+    ArrayList<String> getNamesList (){return names;}
     String getName (){return custName;} 
 }
