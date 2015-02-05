@@ -57,6 +57,8 @@ public class CSC668 {
                catch (Exception e){
                    System.out.println("Invalid File Try Again");
                }
+               
+               
             }
             //User manualy inputs order
             else

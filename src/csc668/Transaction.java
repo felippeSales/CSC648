@@ -23,7 +23,6 @@ public class Transaction
         String date;
         String type;
 	ArrayList <Product> products;
-        private enum payTypes {CHECK, CREDIT, CASH};
         private final static String checkType = "check";
         private final static String cashType = "cash";
         private final static String creditType = "credit";
@@ -35,7 +34,7 @@ public class Transaction
             
         }
         
-        Transaction(Payment pay, ArrayList <Product> payList)
+        Transaction(Payment pay, ArrayList <Product> custProdList)
         {
             //@TODO Bryan this is what you should use
             //The java instanceof takes care of checking types for us
@@ -64,6 +63,10 @@ public class Transaction
            {
                calculateAmountReturned();
            }
+           
+           //Copy the product list from the customers list
+           for(Product c : custProdList)
+               products.add(c);
         }
 
 	public void calculateTotalPrice()
@@ -115,6 +118,5 @@ public class Transaction
         }
         
         
-
 
 }
