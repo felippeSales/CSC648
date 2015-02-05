@@ -9,11 +9,19 @@ package csc668;
  *
  * @author moseslee
  */
+import csc668.UI.ProductsFile;
 import java.util.ArrayList;
+import java.util.Scanner;
 public class CSC668 {
 
  public static void main(String args[])
 {
+        String name;
+        Payment payType;
+        ArrayList <Product> custProductList;
+        ProductsFile productDB = new ProductsFile("products.txt");
+        ArrayList <Product> productDBList = productDB.parse();
+        
 	ArrayList <Product> productList1 = new ArrayList();
         ArrayList <Product> productList2 = new ArrayList();
         ArrayList <Product> productList3 = new ArrayList();
@@ -39,18 +47,36 @@ public class CSC668 {
 	Transaction t2 = new Transaction();
 	Transaction t3 = new Transaction();
 
-
+        //Greeting and intro
+        System.out.println("Welcome to Point of Sale Terminal!");
+        System.out.println("Enter your name, the UPC numbers and " + 
+                            "your method of payment");
+        System.out.println("Afterwards a receipt will be printed for you");
+        
+        Scanner inputScan = new Scanner(System.in);
+        System.out.println("Enter your name: ");
+        name = inputScan.next();
+        
+        while(true)
+        {
+            System.out.println("Enter the UPC of your item (Enter -1 to if done): ");
+            int upc = inputScan.nextInt();
+            
+            
+        }
+        
+        
     }
  
-/**
- * Test print method to ensure correct
- * method functions
- * @param t 
- */
- void printTransactionRecords(Transaction t)
-{
+    /**
+     * Test print method to ensure correct
+     * method functions
+     * @param t
+     */
+     void printTransactionRecords(Transaction t)
+    {
 
-}
+    }
     
 }
 

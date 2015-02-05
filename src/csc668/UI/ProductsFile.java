@@ -21,15 +21,15 @@ import java.util.List;
  */
 public class ProductsFile {
 
-    List<Product> products;
+    ArrayList<Product> products;
     String fileName;
 
     public ProductsFile(String fileName) {
-        products = new ArrayList<Product>();
+        products = new ArrayList();
         this.fileName = fileName;
     }
 
-    public List<Product> parse() {
+    public ArrayList<Product> parse() {
         BufferedReader buffer = null;
 
         try {
