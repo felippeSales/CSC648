@@ -32,7 +32,7 @@ public class ProductsFile {
         return products;
     }
     
-    private List<Product> parse() {
+    private void parse() {
         BufferedReader buffer = null;
         String upc, description;
         double price;
@@ -69,7 +69,5 @@ public class ProductsFile {
                 ex.printStackTrace();
             }
         }
-
-        return products;
     }
 }
