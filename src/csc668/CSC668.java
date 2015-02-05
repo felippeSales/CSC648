@@ -20,9 +20,9 @@ public class CSC668 {
 
 	for (int i = 0; i < 10; i++)
 	{
-		Product p = new Product();
-		Product p1 = new Product();
-		Product p2 = new Product();
+		Product p = new Product("1234", "Toilet", 50.50);
+		Product p1 = new Product("0987", "Sink", 100.00);
+		Product p2 = new Product("7889", "tub", 500.00);
 
 		productList1.add(p);
 		productList2.add(p1);

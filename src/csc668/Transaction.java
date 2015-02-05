@@ -20,18 +20,44 @@ public class Transaction
 	Payment pay;
 	String name;
 	ArrayList <Product> products;
+        private enum payTypes {CHECK, CREDIT, CASH};
         
         Transaction()
         {
             products = new ArrayList();
             
         }
+        
+        Transaction(Payment p)
+        {
+            //@TODO Bryan this is what you should use
+            //The java instanceof takes care of checking types for us
+           products = new ArrayList();
+           if(p instanceof CreditPayment)
+           {
+               
+           }
+           if(p instanceof CheckPayment)
+           {
+               
+           }
+           
+           if(p instanceof CashPayment)
+           {
+               
+           }
+        }
 
 	private void calculateTotalPrice()
 	{
-            for (Product p : products)
-            {
-                //totalPrice += p.getPrice();
+            if(validTransaction){
+                for (Product p : products)
+                {
+                    totalPrice += p.getPrice();
+                }
+            }
+            else{
+                totalPrice = 0.0;
             }
 	}
         
@@ -67,7 +93,7 @@ public class Transaction
         
         private void setValidTransaction()
         {
-            //validTransaction = pay.isValidPayment();
+            validTransaction = pay.isValid();
         }
 
 
