@@ -20,12 +20,12 @@ public class CSC668 {
         ProductsFile productDB = new ProductsFile("products.txt");
         ArrayList <Product> productDBList = productDB.getProducts();
         ArrayList <Product> custProductList;
-        Transaction t;
+        Transaction currentTransaction;
         
         //Variables if the user reads from order file
         int hasOrderForm = 1;   //1 to read from a transaction file else to manually input
-        String fileName;
-        TransactionFile orderForm;
+        String fileName;        //User specified order file
+        TransactionFile orderForm; //Class to process the order
 
         //Variables if the user manually inputs
         String name;
@@ -36,13 +36,13 @@ public class CSC668 {
         System.out.println("Enter your name, the UPC numbers and " + 
                             "your method of payment");
         System.out.println("Afterwards a receipt will be printed for you");
+        Scanner inputScan = new Scanner(System.in);
 
         //Begin the user interaction
         while(hasOrderForm >= 0)
         {
             System.out.println("Please enter 1 if you have an order form");
-            System.out.println("If not enter 0 or -1 to exit");
-            Scanner inputScan = new Scanner(System.in);
+            System.out.println("If not enter 0 or -1 to exit: ");
 
             hasOrderForm = inputScan.nextInt();
             //Reads the order form
@@ -52,16 +52,20 @@ public class CSC668 {
                fileName = inputScan.next();
                try
                {
-                orderForm = new TransactionFile(fileName);
+                   //orderForm = new TransactionFile(fileName, productDBList);
+               
                }
-               catch (Exception e){
+               catch (Exception e)
+               {
                    System.out.println("Invalid File Try Again");
                }
                
+               //custProdList = orderForm.getCustomerList();
                
+               //currentTransaction = orderForm;
             }
             //User manualy inputs order
-            else
+            else if(hasOrderForm == 0)
             {
 
                 System.out.println("Enter your name: ");

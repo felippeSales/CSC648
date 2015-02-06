@@ -6,6 +6,7 @@
 package csc668;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Transaction
         String time;
         String date;
         String type;
+        Date d;
 	ArrayList <Product> products;
         private final static String checkType = "check";
         private final static String cashType = "cash";
@@ -52,8 +54,10 @@ public class Transaction
            {
                type = cashType;
            }
+           d = new Date();
            
-           
+           time = String.format("%d:d",d.getHours(), d.getMinutes());
+           date = String.format("%d/%d/%d", d.getMonth(), d.getDay(), d.getYear());
            
            //Check to see if the payment is valid
            setValidTransaction();
@@ -117,6 +121,14 @@ public class Transaction
             validTransaction = payType.isValid();
         }
         
+        public String getTime()
+        {
+            return time;
+        }
         
+        public String getDate()
+        {
+            return date;
+        }
 
 }
