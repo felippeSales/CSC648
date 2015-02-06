@@ -96,7 +96,7 @@ public class TransactionFile
             }
            else
             {
-            checkOrCreditNum = "N/A";
+            checkOrCreditNum = "0";
             }
             newCustomer = true;
             ////////////////////////////////
@@ -117,7 +117,7 @@ public class TransactionFile
             {
                 p = new CashPayment();
             }
-            Transaction t = new Transaction(names.get(0),p,myProducts);
+            Transaction t = new Transaction(names.get(0), p, myProducts);
             transactions.add(t);
             names.clear();
             USBNS.clear();

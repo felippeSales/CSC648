@@ -10,22 +10,23 @@ package csc668;
  * @author moseslee
  */
 import csc668.UI.ProductsFile;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class CSC668 {
 
-    public static void main(String args[])
+    public static void main(String args[]) throws IOException
     {
         //Variables tat the entire program needs
         ProductsFile productDB = new ProductsFile("products.txt");
         ArrayList <Product> productDBList = productDB.getProducts();
         ArrayList <Product> custProductList;
-        Transaction currentTransaction;
+        ArrayList <Transaction> currentTransaction = null;
         
         //Variables if the user reads from order file
         int hasOrderForm = 1;   //1 to read from a transaction file else to manually input
         String fileName;        //User specified order file
-        TransactionFile orderForm; //Class to process the order
+        TransactionFile orderForm = null; //Class to process the order
 
         //Variables if the user manually inputs
         String name;
@@ -50,19 +51,23 @@ public class CSC668 {
             {
                System.out.println("Enter in the order file name: ");
                fileName = inputScan.next();
-               try
+               //try
+               //{
+                   orderForm = new TransactionFile(fileName, productDBList);
+               
+             //  }
+//               catch (Exception e)
+//               {
+//                   System.out.println("Invalid File Try Again");
+//                   break;
+//               }
+               
+               
+               currentTransaction = orderForm.getTransactions();
+               for(Transaction t : currentTransaction)
                {
-                   //orderForm = new TransactionFile(fileName, productDBList);
-               
+                   System.out.println("Name: " + t.getName());
                }
-               catch (Exception e)
-               {
-                   System.out.println("Invalid File Try Again");
-               }
-               
-               //custProdList = orderForm.getCustomerList();
-               
-               //currentTransaction = orderForm;
             }
             //User manualy inputs order
             else if(hasOrderForm == 0)
@@ -74,6 +79,7 @@ public class CSC668 {
                 {
                     System.out.println("Enter the UPC of your item (Enter -1 to if done): ");
                     int upc = inputScan.nextInt();
+                    if(upc == -1) break;
                 }
             }
         }

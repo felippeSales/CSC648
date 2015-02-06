@@ -56,6 +56,8 @@ public class Transaction
            {
                type = cashType;
            }
+           
+           payType = pay;
            d = new Date();
            
            time = String.format("%d:d",d.getHours(), d.getMinutes());
@@ -131,6 +133,11 @@ public class Transaction
         public String getDate()
         {
             return date;
+        }
+        
+        public String getName()
+        {
+            return custName;
         }
 
 }
