@@ -75,18 +75,16 @@ public class Transaction
            //Copy the product list from the customers list
            for(Product c : custProdList)
                products.add(c);
+           
+           //Calculate Total Price
+           calculateTotalPrice();
         }
 
-	public void calculateTotalPrice()
+	private void calculateTotalPrice()
 	{
-            if(validTransaction){
-                for (Product p : products)
-                {
-                    totalPrice += p.getPrice();
-                }
-            }
-            else{
-                totalPrice = 0.0;
+            for (Product p : products)
+            {
+                totalPrice += p.getPrice();
             }
 	}
         
