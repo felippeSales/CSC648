@@ -67,6 +67,7 @@ public class CSC668 {
                for(Transaction t : currentTransaction)
                {
                    System.out.println("Name: " + t.getName());
+                   System.out.println("total price: " + t.getTotalPrice());
                }
             }
             //User manualy inputs order
