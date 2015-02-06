@@ -1,0 +1,13 @@
+Sam Smith
+1111     6
+1112     1
+CASH 100.00
+
+Nick Clark
+1113
+CHECK 200.00
+
+Doctor Mario
+1111     3
+1113     11
+CREDIT 55555
