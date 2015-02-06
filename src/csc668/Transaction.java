@@ -17,38 +17,59 @@ public class Transaction
 	double amountTendered;
 	double amountReturned;
 	boolean validTransaction;
-	Payment pay;
+	Payment payType;
 	String name;
+        String time;
+        String date;
+        String type;
 	ArrayList <Product> products;
-        private enum payTypes {CHECK, CREDIT, CASH};
+        private final static String checkType = "check";
+        private final static String cashType = "cash";
+        private final static String creditType = "credit";
         
+        //@TODO ADD CONSTRUCTOR TO GET PRODUCT LIST
         Transaction()
         {
             products = new ArrayList();
             
         }
         
-        Transaction(Payment p)
+        Transaction(Payment pay, ArrayList <Product> custProdList)
         {
             //@TODO Bryan this is what you should use
             //The java instanceof takes care of checking types for us
            products = new ArrayList();
-           if(p instanceof CreditPayment)
+           if(pay instanceof CreditPayment)
            {
-               
+               type = creditType;
            }
-           if(p instanceof CheckPayment)
+           if(pay instanceof CheckPayment)
            {
-               
+               type = checkType;
            }
            
-           if(p instanceof CashPayment)
+           if(pay instanceof CashPayment)
            {
-               
+               type = cashType;
            }
+           
+           
+           
+           //Check to see if the payment is valid
+           setValidTransaction();
+           
+           //If its cash payment calculate the change
+           if(type.equals(cashType))
+           {
+               calculateAmountReturned();
+           }
+           
+           //Copy the product list from the customers list
+           for(Product c : custProdList)
+               products.add(c);
         }
 
-	private void calculateTotalPrice()
+	public void calculateTotalPrice()
 	{
             if(validTransaction){
                 for (Product p : products)
@@ -93,9 +114,9 @@ public class Transaction
         
         private void setValidTransaction()
         {
-            validTransaction = pay.isValid();
+            validTransaction = payType.isValid();
         }
-
+        
+        
 
 }
-

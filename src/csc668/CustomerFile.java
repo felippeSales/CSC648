@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author Optimus Prime
  */
-public class Transaction 
+public class CustomerFile 
 {
     String fileName;
     String custName;
@@ -26,7 +26,7 @@ public class Transaction
     ArrayList <Integer> quant = new ArrayList <Integer>(); 
     String checkOrCreditNum;
     
-    Transaction ()
+    CustomerFile ()
     {
     fileName = "";
     }
@@ -35,7 +35,7 @@ public class Transaction
     ///////////////////////////////////////////////
     // Constructor... Calls Method To start Parsing
     ///////////////////////////////////////////////
-    Transaction (String a) throws FileNotFoundException, IOException
+    CustomerFile (String a) throws FileNotFoundException, IOException
     {
         fileName = a;
         Go();

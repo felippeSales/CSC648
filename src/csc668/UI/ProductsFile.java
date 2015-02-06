@@ -2,11 +2,8 @@ package csc668.UI;
 
 import csc668.Product;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +18,24 @@ import java.util.List;
  */
 public class ProductsFile {
 
-    List<Product> products;
-    String fileName;
+    private ArrayList<Product> products;
+    private String fileName;
 
     public ProductsFile(String fileName) {
-        products = new ArrayList<Product>();
+        products = new ArrayList();
         this.fileName = fileName;
+        
+        parse();
     }
 
-    public List<Product> parse() {
+    public ArrayList<Product> getProducts(){
+        return products;
+    }
+    
+    private void parse() {
         BufferedReader buffer = null;
+        String upc, description;
+        double price;
 
         try {
 
@@ -40,10 +45,18 @@ public class ProductsFile {
             buffer = new BufferedReader(new FileReader(fileName));
 
             while ((sCurrentLine = buffer.readLine()) != null) {
-                String[] parts = sCurrentLine.split(";");
-                newProduct = new Product(parts[0], parts[1], Double.parseDouble(parts[2]));
                 
-                products.add(newProduct);
+                try {
+                    upc = sCurrentLine.substring(0,4);
+                    description = sCurrentLine.substring(9, 29);
+                    price = Double.parseDouble(sCurrentLine.substring(35));
+
+                    newProduct = new Product(upc, description, price);
+
+                    products.add(newProduct);
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,7 +69,5 @@ public class ProductsFile {
                 ex.printStackTrace();
             }
         }
-
-        return products;
     }
 }
