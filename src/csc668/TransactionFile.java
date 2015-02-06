@@ -27,6 +27,9 @@ public class TransactionFile
     ArrayList <Integer> quant = new ArrayList(); 
     String checkOrCreditNum;
     boolean newCustomer = true;
+    ArrayList<Product> pros;
+    ArrayList<Product> myProducts = new ArrayList();
+    ArrayList<Transaction> transactions = new ArrayList();
     
     TransactionFile ()
     {
@@ -37,9 +40,10 @@ public class TransactionFile
     ///////////////////////////////////////////////
     // Constructor... Calls Method To start Parsing
     ///////////////////////////////////////////////
-    TransactionFile (String a) throws FileNotFoundException, IOException
+    TransactionFile (String a,ArrayList<Product> p) throws FileNotFoundException, IOException
     {
         fileName = a;
+        pros = p;
         Go();
     }
     
@@ -72,6 +76,7 @@ public class TransactionFile
         {
             System.out.println("Found a new Customer...");
             //custName = temp;
+            names.clear();
             names.add(temp);
             newCustomer = false;
         }
@@ -94,28 +99,78 @@ public class TransactionFile
             checkOrCreditNum = "N/A";
             }
             newCustomer = true;
+            ////////////////////////////////
+            // Begin Creating Transaction
+            ///////////////////////////////
+            Payment p;
+            int tempC = Integer.parseInt(checkOrCreditNum);
+            if(methodOfPay.equalsIgnoreCase("Credit"))
+            {
+            p = new CreditPayment(tempC);
+            }
+            
+            else if(methodOfPay.equalsIgnoreCase("Check"))
+            {
+            p = new CheckPayment(tempC);
+            }
+            else
+            {
+                p = new CashPayment();
+            }
+            Transaction t = new Transaction(names.get(0),p,myProducts);
+            transactions.add(t);
+            names.clear();
+            USBNS.clear();
+            myProducts.clear();
+            quant.clear();
+            
+            names.add(temp);
+            
             br.readLine();
         }
         /////////////
         // GetName
         /////////////
         
-        ///////////////////////////
-        // Get USBN and Name Quant
-        ///////////////////////////
+        ///////////////////////////////////////////////////////
+        // Get USBN and Name Quant also Checking for Validity
+        //////////////////////////////////////////////////////
        else if (count >= 1 && newCustomer == false)
         {
+            boolean valid = false;
             String[] str_array = temp.split("\\s+");
-            USBNS.add(str_array[0]);
-            if(str_array.length == 1)
+            Product insertPro = null;
+            
+            // Checking the Products and Currently Selected UPC
+            for(Product p: pros)
             {
-             quant.add(1);
+                if(p.getUPC().equalsIgnoreCase(str_array[0]))
+                {
+                valid = true;
+                insertPro = p;
+                break;
+                }
             }
+            if(valid == false){System.out.println("Invalid Item...Will Not Count");}
             else
             {
-             int tempInt = Integer.parseInt(str_array[1]);
-             quant.add(tempInt);
-             }
+              int tempInt = 1;
+              USBNS.add(str_array[0]);
+              if(str_array.length == 1)
+              {
+              quant.add(1);
+              }
+              else
+              {
+              tempInt = Integer.parseInt(str_array[1]);
+              quant.add(tempInt);
+              }
+              
+              for(int i = 0; i < tempInt; i ++ )
+              {
+              myProducts.add(insertPro);
+              }
+            }
         }
        
         count++;
@@ -155,6 +210,14 @@ public class TransactionFile
         }
     }
     
+    void setProductDB (ArrayList<Product> p)
+    {
+    pros = p;
+    
+    }
+    
+    
+    
     //////////////////////
     // Getters For Data
     /////////////////////
@@ -162,5 +225,7 @@ public class TransactionFile
     ArrayList<String> getArrayListOfProductNames(){return proNames;}
     ArrayList<Integer> getArrayListOfQuantity () {return quant;}
     ArrayList<String> getNamesList (){return names;}
+    ArrayList<Product> getCustomerProducts () {return myProducts;}
+    ArrayList<Transaction> getTransactions() {return transactions;}
     String getName (){return custName;} 
 }
