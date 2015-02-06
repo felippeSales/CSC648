@@ -137,5 +137,15 @@ public class Transaction
         {
             return custName;
         }
+        
+        public Payment getType()
+        {
+            return payType;
+        }
+        
+        public ArrayList<Product> getProducts()
+        {
+            return products;
+        }
 
 }
