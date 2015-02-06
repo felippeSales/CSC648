@@ -19,7 +19,7 @@ public class Transaction
 	double amountReturned;
 	boolean validTransaction;
 	Payment payType;
-	String name;
+	String custName;
         String time;
         String date;
         String type;
@@ -36,10 +36,12 @@ public class Transaction
             
         }
         
-        Transaction(Payment pay, ArrayList <Product> custProdList)
+        Transaction(String name, Payment pay, ArrayList <Product> custProdList)
         {
             //@TODO Bryan this is what you should use
             //The java instanceof takes care of checking types for us
+            
+           custName = name;
            products = new ArrayList();
            if(pay instanceof CreditPayment)
            {
