@@ -15,5 +15,5 @@ Payment Check 12334543
 
 John Smith
 1112 2
-Payment Cash
+Payment Cash 100
 		

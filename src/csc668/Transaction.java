@@ -14,50 +14,49 @@ import java.util.Date;
  */
 public class Transaction
 {
-	double totalPrice;
-	double amountTendered;
-	double amountReturned;
-	boolean validTransaction;
-	Payment payType;
-	String custName;
-        String time;
-        String date;
-        String type;
-        Date d;
-	ArrayList <Product> products;
+	double totalPrice;                             //total price
+	double amountTendered;                         //amount paid
+	double amountReturned;                         //change
+	boolean validTransaction;                      //if its valid payment
+	Payment payType;                               //Payment object 
+	String custName;                               //Customers name
+        String time;                                   //Time
+        String date;                                   //Date
+        String type;                                   //Type of payment name
+        Date d;                                        //For the date object
+	ArrayList <Product> products;                  //list of products
+        //Variable names for the type
         private final static String checkType = "check";
         private final static String cashType = "cash";
         private final static String creditType = "credit";
         
-        //@TODO ADD CONSTRUCTOR TO GET PRODUCT LIST
+        /**
+         * Default Constructor
+         */
         Transaction()
         {
             products = new ArrayList();
-            
         }
         
+        /**
+         * Constructor that takes in customer name, payment object, and 
+         * array list of products
+         * @param name Customer's name
+         * @param pay payment object. Could be credit, check, cash payment
+         * @param custProdList list of customer's valid product
+         */
         Transaction(String name, Payment pay, ArrayList <Product> custProdList)
         {
-            //@TODO Bryan this is what you should use
-            //The java instanceof takes care of checking types for us
-            
+           //Save default 
            custName = name;
            products = new ArrayList();
-           if(pay instanceof CreditPayment)
-           {
-               type = creditType;
-           }
-           if(pay instanceof CheckPayment)
-           {
-               type = checkType;
-           }
-           
-           if(pay instanceof CashPayment)
-           {
-               type = cashType;
-           }
+           if(pay instanceof CreditPayment) type = creditType;
+           else if(pay instanceof CheckPayment) type = checkType;
+           else if(pay instanceof CashPayment) type = cashType;
            
            payType = pay;
+           
+           //Create a date object to get relevant date information
            d = new Date();
            
            time = String.format("%d:d",d.getHours(), d.getMinutes());
@@ -80,6 +79,9 @@ public class Transaction
            calculateTotalPrice();
         }
 
+        /**
+         * Calculates total price
+         */
 	private void calculateTotalPrice()
 	{
             for (Product p : products)
@@ -88,61 +90,110 @@ public class Transaction
             }
 	}
         
+        /**
+         * Returns total price
+         * @return total price
+         */
         double getTotalPrice()
         {
             return totalPrice;
         }
         
+        /**
+         * Sets the amount tendered
+         * @param amount the amount tendered
+         * If credit than amount tendered is the total price
+         * else amount is the specified users amount
+         */
         void setAmountTendered(double amount)
         {
             amountTendered = amount;
         }
         
+        /**
+         * Returns the amount tendered
+         * @return the amount tendered
+         */
         double getAmountTendered()
         {
             return amountTendered;
         }
         
+        /**
+         * Caclualate the change
+         */
         private void calculateAmountReturned()
         {
             amountReturned = amountTendered - totalPrice;
         }
         
+        /**
+         * Returns the amount of change
+         * @return amountReturned
+         */
         double getAmountReturned()
         {
             return amountReturned;
         }
 
+        /**
+         * Returns true if its a valid transaction
+         * else false
+         * @return 
+         */
 	boolean isValidTransaction()
 	{
             return validTransaction;
 	}
         
+        /**
+         * Checks to see if payment is valid
+         */
         private void setValidTransaction()
         {
             validTransaction = payType.isValid();
         }
         
+        /**
+         * Returns the time in string
+         * @return the time
+         */
         public String getTime()
         {
             return time;
         }
         
+        /**
+         * Returns the date in string
+         * @return the date
+         */
         public String getDate()
         {
             return date;
         }
         
+        /**
+         * Returns the custoemrs name
+         * @return customers name
+         */
         public String getName()
         {
             return custName;
         }
         
+        /**
+         * Returns the payment object
+         * @return payType
+         */
         public Payment getPayType()
         {
             return payType;
         }
         
+        /**
+         * Returns the list of products customer buys
+         * @return products
+         */
         public ArrayList<Product> getProducts()
         {
             return products;

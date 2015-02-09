@@ -7,12 +7,9 @@ public class Payment {
     }
     
      public boolean isValid(){
-         Random rand = new Random();
-         int randomInt = rand.nextInt(100);
-         if (randomInt%10 == 0){
-             return false;
-         }
-         else return true;
+        Random rand = new Random();
+        int randomInt = rand.nextInt(100);
+        return randomInt%10 != 0;
     }
      
 }
