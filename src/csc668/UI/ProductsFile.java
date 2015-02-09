@@ -41,7 +41,7 @@ public class ProductsFile {
 
             String sCurrentLine;
             Product newProduct = null;
-
+            System.out.println("File name: " + fileName);
             buffer = new BufferedReader(new FileReader(fileName));
 
             while ((sCurrentLine = buffer.readLine()) != null) {

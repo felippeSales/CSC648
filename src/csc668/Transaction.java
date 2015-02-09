@@ -6,6 +6,7 @@
 package csc668;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -18,10 +19,11 @@ public class Transaction
 	double amountReturned;
 	boolean validTransaction;
 	Payment payType;
-	String name;
+	String custName;
         String time;
         String date;
         String type;
+        Date d;
 	ArrayList <Product> products;
         private final static String checkType = "check";
         private final static String cashType = "cash";
@@ -34,10 +36,12 @@ public class Transaction
             
         }
         
-        Transaction(Payment pay, ArrayList <Product> custProdList)
+        Transaction(String name, Payment pay, ArrayList <Product> custProdList)
         {
             //@TODO Bryan this is what you should use
             //The java instanceof takes care of checking types for us
+            
+           custName = name;
            products = new ArrayList();
            if(pay instanceof CreditPayment)
            {
@@ -53,7 +57,11 @@ public class Transaction
                type = cashType;
            }
            
+           payType = pay;
+           d = new Date();
            
+           time = String.format("%d:d",d.getHours(), d.getMinutes());
+           date = String.format("%d/%d/%d", d.getMonth(), d.getDay(), d.getYear());
            
            //Check to see if the payment is valid
            setValidTransaction();
@@ -67,18 +75,16 @@ public class Transaction
            //Copy the product list from the customers list
            for(Product c : custProdList)
                products.add(c);
+           
+           //Calculate Total Price
+           calculateTotalPrice();
         }
 
-	public void calculateTotalPrice()
+	private void calculateTotalPrice()
 	{
-            if(validTransaction){
-                for (Product p : products)
-                {
-                    totalPrice += p.getPrice();
-                }
-            }
-            else{
-                totalPrice = 0.0;
+            for (Product p : products)
+            {
+                totalPrice += p.getPrice();
             }
 	}
         
@@ -117,6 +123,29 @@ public class Transaction
             validTransaction = payType.isValid();
         }
         
+        public String getTime()
+        {
+            return time;
+        }
         
+        public String getDate()
+        {
+            return date;
+        }
+        
+        public String getName()
+        {
+            return custName;
+        }
+        
+        public Payment getType()
+        {
+            return payType;
+        }
+        
+        public ArrayList<Product> getProducts()
+        {
+            return products;
+        }
 
 }
