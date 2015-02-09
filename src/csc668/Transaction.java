@@ -65,11 +65,6 @@ public class Transaction
            //Check to see if the payment is valid
            setValidTransaction();
            
-           //If its cash payment calculate the change
-           if(type.equals(cashType))
-           {
-               calculateAmountReturned();
-           }
            
            //Copy the product list from the customers list
            for(Product c : custProdList)
@@ -77,6 +72,12 @@ public class Transaction
            
            //Calculate Total Price
            calculateTotalPrice();
+           
+           //If its cash payment calculate the change
+           if(type.equals(cashType) || type.equals(checkType))
+           {
+               calculateAmountReturned();
+           }
         }
 
         /**
@@ -108,6 +109,7 @@ public class Transaction
         void setAmountTendered(double amount)
         {
             amountTendered = amount;
+            calculateAmountReturned();
         }
         
         /**
@@ -124,6 +126,8 @@ public class Transaction
          */
         private void calculateAmountReturned()
         {
+            System.out.println("AmountTendered: " + amountTendered);
+            System.out.println("Total Amount: " + totalPrice);
             amountReturned = amountTendered - totalPrice;
         }
         

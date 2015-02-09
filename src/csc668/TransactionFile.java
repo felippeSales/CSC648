@@ -101,7 +101,7 @@ public class TransactionFile
             }
            else
             {
-            checkOrCreditNum = "N/A";
+            checkOrCreditNum = "0";
             amount = Double.parseDouble(str_array[2]);
             }
             newCustomer = true;
@@ -125,7 +125,8 @@ public class TransactionFile
                 p = new CashPayment();
             }
             Transaction t = new Transaction(names.get(0),p,myProducts);            
-            if(p instanceof CheckPayment || p instanceof CashPayment){t.amountTendered = amount;}
+            if(p instanceof CheckPayment || p instanceof CashPayment){t.setAmountTendered(amount);}
+            System.out.println("This is the amount tendered: " + amount);
             transactions.add(t);
             names.clear();
             USBNS.clear();
