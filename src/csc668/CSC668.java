@@ -68,6 +68,13 @@ public class CSC668 {
                {
                    System.out.println("Name: " + t.getName());
                    System.out.println("total price: " + t.getTotalPrice());
+                   if(t.getType() instanceof CreditPayment) System.out.println("Paid by credit card");
+                   else if(t.getType() instanceof CheckPayment) System.out.println("Paid by check");
+                   else if(t.getType() instanceof CashPayment) System.out.println("Paid by cash");
+                   for(Product p : t.getProducts())
+                   {
+                       System.out.println(p.getName());
+                   }
                }
             }
             //User manualy inputs order

@@ -84,6 +84,7 @@ public class Transaction
 	{
             for (Product p : products)
             {
+                System.out.println("Product name: " + p.getName() + " Product price: " + p.getPrice());
                 totalPrice += p.getPrice();
             }
 	}

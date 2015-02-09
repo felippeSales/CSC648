@@ -47,9 +47,13 @@ public class ProductsFile {
             while ((sCurrentLine = buffer.readLine()) != null) {
                 
                 try {
-                    upc = sCurrentLine.substring(0,4);
-                    description = sCurrentLine.substring(9, 29);
-                    price = Double.parseDouble(sCurrentLine.substring(35));
+                   // upc = sCurrentLine.substring(0,4);
+                   // description = sCurrentLine.substring(9, 29);
+                   // price = Double.parseDouble(sCurrentLine.substring(34));
+                    String [] split = sCurrentLine.split("\\s+");
+                    upc = split[0];
+                    description = split[1];
+                    price = Double.parseDouble(split[2]);
 
                     newProduct = new Product(upc, description, price);
 
