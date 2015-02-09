@@ -96,13 +96,13 @@ public class TransactionFile
              checkOrCreditNum = str_array[2];  
              if(methodOfPay.equalsIgnoreCase("check"))
              {
-                 amount = Double.parseDouble(str_array[2]);
+                 amount = Double.parseDouble(str_array[3]);
              }
             }
            else
             {
             checkOrCreditNum = "N/A";
-            amount = Double.parseDouble(str_array[1]);
+            amount = Double.parseDouble(str_array[2]);
             }
             newCustomer = true;
             ////////////////////////////////

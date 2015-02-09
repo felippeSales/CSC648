@@ -79,8 +79,13 @@ public class CSC668 {
                        System.out.println("Paid by check");
                        System.out.println("Check Number:" + ((CheckPayment )t.getPayType()).getCheckNumber());
                        System.out.println("Is valid: " + t.getPayType().isValid());
+                       System.out.println("Amount tendered: " + t.getAmountTendered());
                    }
-                   else if(t.getPayType() instanceof CashPayment) System.out.println("Paid by cash");
+                   else if(t.getPayType() instanceof CashPayment)
+                   {
+                       System.out.println("Paid by cash");
+                       System.out.println("Amount tendered: " + t.getAmountTendered());
+                   }
                    for(Product p : t.getProducts())
                    {
                        System.out.println(p.getName());
