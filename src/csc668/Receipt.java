@@ -68,7 +68,7 @@ public class Receipt {
                     receipt += "Paid by check";
                     
                 } else if (transaction.type.equals("credit")) {
-                    receipt += "Paid by Credit Card " + ((CreditPayment) transaction.getType()).getCheckNumber();
+                    //receipt += "Paid by Credit Card " + ((CreditPayment) transaction.getType()).getCheckNumber();
                 }
 
                 receipt += "Amount Returned: " + transaction.getAmountReturned();

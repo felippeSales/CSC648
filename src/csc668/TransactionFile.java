@@ -74,7 +74,7 @@ public class TransactionFile
         ///////////////////////////////////////////////
          if( (newCustomer == true))
         {
-            System.out.println("Found a new Customer...");
+          //  System.out.println("Found a new Customer...");
             //custName = temp;
             names.clear();
             names.add(temp);
@@ -151,7 +151,7 @@ public class TransactionFile
                 break;
                 }
             }
-            if(valid == false){System.out.println("Invalid Item...Will Not Count");}
+            if(valid == false){/*System.out.println("Invalid Item...Will Not Count");*/}
             else
             {
               int tempInt = 1;
@@ -174,7 +174,7 @@ public class TransactionFile
         }
        
         count++;
-        System.out.print("Here ");
+      //  System.out.print("Here ");
         } // End of the While loop for Looking Through A File...
         fr.close();
     } ///////////////// END OF THE GO METHOD ///////////////////////

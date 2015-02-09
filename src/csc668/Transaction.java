@@ -84,7 +84,6 @@ public class Transaction
 	{
             for (Product p : products)
             {
-                System.out.println("Product name: " + p.getName() + " Product price: " + p.getPrice());
                 totalPrice += p.getPrice();
             }
 	}
@@ -139,7 +138,7 @@ public class Transaction
             return custName;
         }
         
-        public Payment getType()
+        public Payment getPayType()
         {
             return payType;
         }
