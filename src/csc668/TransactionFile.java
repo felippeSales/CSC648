@@ -30,6 +30,7 @@ public class TransactionFile
     ArrayList<Product> pros;
     ArrayList<Product> myProducts = new ArrayList();
     ArrayList<Transaction> transactions = new ArrayList();
+    double amount;
     
     TransactionFile ()
     {
@@ -74,7 +75,7 @@ public class TransactionFile
         ///////////////////////////////////////////////
          if( (newCustomer == true))
         {
-          //  System.out.println("Found a new Customer...");
+            System.out.println("Found a new Customer...");
             //custName = temp;
             names.clear();
             names.add(temp);
@@ -92,11 +93,16 @@ public class TransactionFile
             methodOfPay = str_array[1];
             if(methodOfPay.equalsIgnoreCase("credit") || methodOfPay.equalsIgnoreCase("check"))
             {
-             checkOrCreditNum = str_array[2];   
+             checkOrCreditNum = str_array[2];  
+             if(methodOfPay.equalsIgnoreCase("check"))
+             {
+                 amount = Double.parseDouble(str_array[2]);
+             }
             }
            else
             {
-            checkOrCreditNum = "0";
+            checkOrCreditNum = "N/A";
+            amount = Double.parseDouble(str_array[1]);
             }
             newCustomer = true;
             ////////////////////////////////
@@ -104,6 +110,7 @@ public class TransactionFile
             ///////////////////////////////
             Payment p;
             int tempC = Integer.parseInt(checkOrCreditNum);
+            
             if(methodOfPay.equalsIgnoreCase("Credit"))
             {
             p = new CreditPayment(tempC);
@@ -117,7 +124,8 @@ public class TransactionFile
             {
                 p = new CashPayment();
             }
-            Transaction t = new Transaction(names.get(0), p, myProducts);
+            Transaction t = new Transaction(names.get(0),p,myProducts);            
+            if(p instanceof CheckPayment || p instanceof CashPayment){t.amountTendered = amount;}
             transactions.add(t);
             names.clear();
             USBNS.clear();
@@ -151,7 +159,7 @@ public class TransactionFile
                 break;
                 }
             }
-            if(valid == false){/*System.out.println("Invalid Item...Will Not Count");*/}
+            if(valid == false){System.out.println("Invalid Item...Will Not Count");}
             else
             {
               int tempInt = 1;
@@ -174,7 +182,7 @@ public class TransactionFile
         }
        
         count++;
-      //  System.out.print("Here ");
+        System.out.print("Here ");
         } // End of the While loop for Looking Through A File...
         fr.close();
     } ///////////////// END OF THE GO METHOD ///////////////////////
