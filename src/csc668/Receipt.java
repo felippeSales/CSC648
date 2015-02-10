@@ -61,8 +61,8 @@ public class Receipt {
         {
             out.println(currTrans.getAmountTendered());
         }
-        else if (currTrans.getType()=="check"){
-            out.println("Paid by " + currTrans.getType());
+        else if (currTrans.getType()=="check"){ 
+           out.println("Paid by " + currTrans.getType());
         }
         else{
             out.println("num is credit card #");
