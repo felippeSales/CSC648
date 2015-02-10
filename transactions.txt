@@ -11,9 +11,9 @@ Felippe Sales
 1113 1
 1112 6
 1111 6
-Payment Check 12334543
+Payment Check 12334543 100.00
 
 John Smith
 1112 2
-Payment Cash
+Payment Cash 100.00
 		

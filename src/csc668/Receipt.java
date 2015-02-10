@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.File;
 
 public class Receipt {
     Transaction currTrans;
@@ -29,15 +30,18 @@ public class Receipt {
     
     public void WriteFile(String fileName){
         PrintWriter out;
+        File file = new File("Receipts");
+        file.mkdir();
         ArrayList<Product> foundProducts = new ArrayList();
         try{
             if (fileName.equalsIgnoreCase("ReceiptList.txt"))
             {
         out = new PrintWriter(new FileWriter(fileName, true));
             }
+
             else{
-                out = new PrintWriter(new FileWriter("Receipts/"+fileName, true));
-            }
+                out = new PrintWriter(new FileWriter("Receipts/"+fileName+".txt", true));
+            } 
         out.println("--------------------");
         out.println("STORE NAME \n");
         out.println("");
@@ -53,12 +57,12 @@ public class Receipt {
         }
         out.println("Total: " + currTrans.getTotalPrice());
         out.print("Amount Tendered: ");
-        if (currTrans.getPayType()=="cash")
+        if (currTrans.getType()=="cash")
         {
             out.println(currTrans.getAmountTendered());
         }
-        else if (currTrans.getPayType()=="check"){
-            out.println("Paid by " + currTrans.getPayType());
+        else if (currTrans.getType()=="check"){
+            out.println("Paid by " + currTrans.getType());
         }
         else{
             out.println("num is credit card #");

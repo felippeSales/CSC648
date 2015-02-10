@@ -30,6 +30,7 @@ public class TransactionFile
     ArrayList<Product> pros;
     ArrayList<Product> myProducts = new ArrayList();
     ArrayList<Transaction> transactions = new ArrayList();
+    double amount;
     
     TransactionFile ()
     {
@@ -92,11 +93,16 @@ public class TransactionFile
             methodOfPay = str_array[1];
             if(methodOfPay.equalsIgnoreCase("credit") || methodOfPay.equalsIgnoreCase("check"))
             {
-             checkOrCreditNum = str_array[2];   
+             checkOrCreditNum = str_array[2];  
+             if(methodOfPay.equalsIgnoreCase("check"))
+             {
+                 amount = Double.parseDouble(str_array[3]);
+             }
             }
            else
             {
             checkOrCreditNum = "0";
+            amount = Double.parseDouble(str_array[2]);
             }
             newCustomer = true;
             ////////////////////////////////
@@ -104,6 +110,7 @@ public class TransactionFile
             ///////////////////////////////
             Payment p;
             int tempC = Integer.parseInt(checkOrCreditNum);
+            
             if(methodOfPay.equalsIgnoreCase("Credit"))
             {
             p = new CreditPayment(tempC);
@@ -117,7 +124,9 @@ public class TransactionFile
             {
                 p = new CashPayment();
             }
-            Transaction t = new Transaction(names.get(0), p, myProducts);
+            Transaction t = new Transaction(names.get(0),p,myProducts);            
+            if(p instanceof CheckPayment || p instanceof CashPayment){t.setAmountTendered(amount);}
+            System.out.println("This is the amount tendered: " + amount);
             transactions.add(t);
             names.clear();
             USBNS.clear();

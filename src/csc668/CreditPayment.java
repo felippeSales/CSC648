@@ -14,7 +14,7 @@ public class CreditPayment extends Payment
     public void setCreditNumber(int newCreditNumber){
         this.creditNumber = newCreditNumber;
     }
-    public int getCheckNumber(){
+    public int getCreditNumber(){
         return this.creditNumber;
     }
     public String getType(){
