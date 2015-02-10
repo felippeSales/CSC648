@@ -95,7 +95,7 @@ public class CSC668 {
                    }
                    Receipt test = new Receipt(t);
                    test.WriteFile("ReceiptList.txt");
-                   test.WriteFile(t.getName());
+                   test.WriteFile(t.getDateAndTime());
                }
             }
             //User manualy inputs order
