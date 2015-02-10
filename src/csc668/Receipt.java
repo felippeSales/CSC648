@@ -35,8 +35,36 @@ public class Receipt {
             {
         out = new PrintWriter(new FileWriter(fileName, true));
             }
+<<<<<<< HEAD
             else{
                 out = new PrintWriter(new FileWriter("Receipts/"+fileName, true));
+=======
+
+            //All products of single customer taken care of
+            receipt += "------\n"
+                    + "Total $" + transaction.getTotalPrice()
+                    + "\n Amount Tendered:";
+
+            //Check if transaction is valid
+            if ((transaction.validTransaction)) {
+
+                //Check Type if valid
+                if (transaction.type.equals("cash")) {
+                    receipt += transaction.getAmountTendered();
+                    
+                } else if (transaction.type.equals("check")) {
+                    receipt += "Paid by check";
+                    
+                } else if (transaction.type.equals("credit")) {
+                    //receipt += "Paid by Credit Card " + ((CreditPayment) transaction.getType()).getCheckNumber();
+                }
+
+                receipt += "Amount Returned: " + transaction.getAmountReturned();
+                
+            //Invalid transaction
+            } else {
+                receipt += "Invalid transaction";
+>>>>>>> 2593c046df929d61d797b630336192458c6385f1
             }
         out.println("--------------------");
         out.println("STORE NAME \n");

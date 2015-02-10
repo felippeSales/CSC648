@@ -50,6 +50,9 @@ public class ProductsFile {
                    // upc = sCurrentLine.substring(0,4);
                    // description = sCurrentLine.substring(9, 29);
                    // price = Double.parseDouble(sCurrentLine.substring(34));
+                    //////////////////////////////
+                    // Changed to Split by Spaces
+                    /////////////////////////////
                     String [] split = sCurrentLine.split("\\s+");
                     upc = split[0];
                     description = split[1];
