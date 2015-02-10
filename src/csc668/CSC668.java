@@ -52,16 +52,16 @@ public class CSC668 {
             {
                System.out.println("Enter in the order file name: ");
                fileName = inputScan.next();
-               //try
-               //{
+               try
+               {
                    orderForm = new TransactionFile(fileName, productDBList);
                
-             //  }
-//               catch (Exception e)
-//               {
-//                   System.out.println("Invalid File Try Again");
-//                   break;
-//               }
+               }
+               catch (Exception e)
+               {
+                   System.out.println("Invalid File Try Again");
+                   break;
+               }
                
                
                currentTransaction = orderForm.getTransactions();
