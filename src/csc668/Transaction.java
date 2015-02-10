@@ -5,6 +5,8 @@
  */
 package csc668;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,10 +22,10 @@ public class Transaction
 	boolean validTransaction;                      //if its valid payment
 	Payment payType;                               //Payment object 
 	String custName;                               //Customers name
-        String time;                                   //Time
-        String date;                                   //Date
+        String dateAndTime;                            //Date and Time
         String type;                                   //Type of payment name
         Date d;                                        //For the date object
+        DateFormat dateFormat;                         //To format the date
 	ArrayList <Product> products;                  //list of products
         //Variable names for the type
         private final static String checkType = "check";
@@ -58,9 +60,8 @@ public class Transaction
            
            //Create a date object to get relevant date information
            d = new Date();
-           
-           time = String.format("%d:d",d.getHours(), d.getMinutes());
-           date = String.format("%d/%d/%d", d.getMonth(), d.getDay(), d.getYear());
+           dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+           dateAndTime = dateFormat.format(d);
            
            //Check to see if the payment is valid
            setValidTransaction();
@@ -157,23 +158,15 @@ public class Transaction
         {
             validTransaction = payType.isValid();
         }
-        
-        /**
-         * Returns the time in string
-         * @return the time
-         */
-        public String getTime()
-        {
-            return time;
-        }
+       
         
         /**
          * Returns the date in string
          * @return the date
          */
-        public String getDate()
+        public String getDateAndTime()
         {
-            return date;
+            return dateAndTime;
         }
         
         /**

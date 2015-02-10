@@ -10,3 +10,63 @@ Total: 34.05
 Amount Tendered: num is credit card #
 Amount Returned: 0.0
 --------------------
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 1/2/115 12:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 1/10/2015 12:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 1/10/2015 12:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 1/10/2015 12:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 2/10/2015 12:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
