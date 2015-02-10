@@ -12,6 +12,7 @@ package csc668;
 import csc668.UI.ProductsFile;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class CSC668 {
 
@@ -44,7 +45,14 @@ public class CSC668 {
 
            System.out.println("Input 1 if you want to enter a file");
            System.out.println("Input anything else if you want to quit");
-           hasOrderForm = inputScan.nextInt();
+           try
+           {
+               hasOrderForm = inputScan.nextInt();
+           }
+           catch (InputMismatchException e)
+           {
+               break;
+           }
            if(hasOrderForm != 1) break;
            
            //Reads the order form
