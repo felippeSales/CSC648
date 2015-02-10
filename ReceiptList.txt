@@ -1,0 +1,36 @@
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 2015/02/10 12:59:38
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------
+--------------------
+STORE NAME 
+
+
+Felippe Sales 2015/02/10 12:59:38
+
+Item boat 1 @ 45.95
+Item bread 6 @ 2.65
+Item egg 6 @ 0.5
+Total: 64.85
+Amount Tendered: Paid by check
+Amount Returned: 35.150000000000006
+--------------------
+--------------------
+STORE NAME 
+
+
+John Smith 2015/02/10 12:59:38
+
+Item bread 2 @ 2.65
+Total: 5.3
+Amount Tendered: 100.0
+Amount Returned: 94.7
+--------------------
