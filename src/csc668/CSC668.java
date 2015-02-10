@@ -42,8 +42,11 @@ public class CSC668 {
         while(hasOrderForm >= 0)
         {
 
+           System.out.println("Input 1 if you want to enter a file");
+           System.out.println("Input anything else if you want to quit");
            hasOrderForm = inputScan.nextInt();
-            
+           if(hasOrderForm != 1) break;
+           
            //Reads the order form
            System.out.println("Enter in the order file name: ");
            fileName = inputScan.next();
