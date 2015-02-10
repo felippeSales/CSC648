@@ -40,7 +40,10 @@ public class Receipt {
             }
 
             else{
-                out = new PrintWriter(new FileWriter("Receipts/"+fileName+".txt", true));
+                fileName = fileName.replaceAll(" ", "_");
+                fileName = fileName.replaceAll("/", "_");
+                
+                out = new PrintWriter(new FileWriter("Receipts/"+fileName.replaceAll(":", "_")+".txt", true));
             } 
         out.println("--------------------");
         out.println("STORE NAME \n");
@@ -56,11 +59,11 @@ public class Receipt {
         }
         out.println("Total: " + currTrans.getTotalPrice());
         out.print("Amount Tendered: ");
-        if (currTrans.getType()=="cash")
+        if (currTrans.getType().equals("cash"))
         {
             out.println(currTrans.getAmountTendered());
         }
-        else if (currTrans.getType()=="check"){ 
+        else if (currTrans.getType().equals("check")){ 
            out.println("Paid by " + currTrans.getType());
         }
         else{
