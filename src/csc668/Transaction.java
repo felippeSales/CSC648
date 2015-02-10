@@ -143,6 +143,22 @@ public class Transaction
         {
             return payType;
         }
+        public String getPayType()
+        {
+            return type;
+        }
+        public int getQuantity(Product p)
+        {
+            int count = 0;
+            for (Product product : products)
+            {
+                if (product.equals(p))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         
         public ArrayList<Product> getProducts()
         {
