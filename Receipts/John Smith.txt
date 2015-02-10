@@ -1,0 +1,11 @@
+--------------------
+STORE NAME 
+
+
+John Smith 1/2/115 5:d
+
+Item bread 2 @ 2.65
+Total: 5.3
+Amount Tendered: 100.0
+Amount Returned: 94.7
+--------------------
