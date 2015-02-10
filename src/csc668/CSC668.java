@@ -46,6 +46,7 @@ public class CSC668 {
             System.out.println("If not enter 0 or -1 to exit: ");
 
             hasOrderForm = inputScan.nextInt();
+            
             //Reads the order form
             if(hasOrderForm == 1)
             {
@@ -92,6 +93,9 @@ public class CSC668 {
                    {
                        System.out.println(p.getName());
                    }
+                   Receipt test = new Receipt(t);
+                   test.WriteFile("ReceiptList.txt");
+                   test.WriteFile(t.getName());
                }
             }
             //User manualy inputs order

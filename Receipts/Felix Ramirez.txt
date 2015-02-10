@@ -1,0 +1,12 @@
+--------------------
+STORE NAME 
+
+
+Felix Ramirez 1/2/115 5:d
+
+Item egg 31 @ 0.5
+Item bread 7 @ 2.65
+Total: 34.05
+Amount Tendered: num is credit card #
+Amount Returned: 0.0
+--------------------

@@ -193,6 +193,23 @@ public class Transaction
         {
             return payType;
         }
+        public String getType()
+        {
+            return type;
+        }
+
+        public int getQuantity(Product p)
+        {
+            int count = 0;
+            for (Product product : products)
+            {
+                if (product.equals(p))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         
         /**
          * Returns the list of products customer buys
